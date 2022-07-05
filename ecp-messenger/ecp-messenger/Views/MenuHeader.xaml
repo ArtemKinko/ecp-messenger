@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ecp_messenger.Views.MenuHeader"
+             HeightRequest="150"
+             BackgroundColor="Gray">
+    <StackLayout HeightRequest="200" HorizontalOptions="Center" Padding="10">
+        <StackLayout Orientation="Horizontal">
+            <Image HeightRequest="50"
+                       Margin="10"
+                       Source="messenger_icon.png"/>
+            <Label Text="ECP-MESSENGER"
+                       TextColor="Black"
+                       FontFamily="Choplin"
+                       FontSize="25"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center"/>
+        </StackLayout>
+        <Label Text="Добро пожаловать,"
+               FontFamily="Eastman-Light"
+               FontSize="20"
+               TextColor="White"
+               HorizontalTextAlignment="Center"/>
+        <Label Text="USERNAME"
+               FontFamily="Eastman-Meduim"
+               FontSize="20"
+               TextColor="White"
+               HorizontalTextAlignment="Center"/>
+    </StackLayout>
+</ContentView>

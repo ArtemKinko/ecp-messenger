@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             BackgroundImageSource="dialog_background_blue.png"
+             x:Class="ecp_messenger.Views.DialogPage"
+             Title="Диалог с USERNAME">
+    <ContentPage.Content>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="70" />
+            </Grid.RowDefinitions>
+            <ScrollView Grid.Row="0" Grid.Column="0" Margin="10">
+                <StackLayout x:Name="BubbleContainer">
+                    <Label Text="Это начало переписки. Начните общаться!"
+                       FontFamily="Eastman-Light"
+                       FontSize="30"
+                       HorizontalTextAlignment="Center"/>
+                </StackLayout>
+            </ScrollView>
+            <Grid Margin="5" Grid.Row="1" Grid.Column="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="4*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Editor x:Name="MessageEditor" Grid.Column="0" Grid.Row="0"
+                    Placeholder="Введите сообщение"
+                    HeightRequest="60"
+                        WidthRequest="300"
+                    AutoSize="TextChanges"
+                    FontFamily="Eastman-Light">
+                </Editor>
+                <ImageButton Grid.Column="1" Grid.Row="0"
+                             Source="send_icon.png"
+                             BackgroundColor="Transparent"
+                             Clicked="SendButton_Clicked"
+                             xct:TouchEffect.AnimationDuration="100"
+                             xct:TouchEffect.AnimationEasing="{x:Static Easing.CubicInOut}"
+                             xct:TouchEffect.PressedScale="0.75"
+                             xct:TouchEffect.PressedOpacity="0.75"/>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

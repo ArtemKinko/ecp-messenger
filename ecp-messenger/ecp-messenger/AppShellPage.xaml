@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pages="clr-namespace:ecp_messenger.Views"
+             x:Class="ecp_messenger.AppShellPage"
+             x:Name="myTabBars"
+             FlyoutBackgroundColor="LightBlue">
+
+    <Shell.FlyoutHeader>
+        <pages:MenuHeader/>
+    </Shell.FlyoutHeader>
+
+    <FlyoutItem Title="Выбор диалога"
+                Icon="user_icon.png">
+        <ShellContent x:Name="DialogPage">
+            <pages:DialogPage />
+        </ShellContent>
+    </FlyoutItem>
+    <FlyoutItem Title="Настройки"
+                Icon="settings_icon.png">
+        <ShellContent x:Name="SettingsPage">
+            <pages:SettingsPage />
+        </ShellContent>
+    </FlyoutItem>
+
+    <MenuItem Text="Обновить сообщения"
+              IconImageSource="refresh_icon.png"
+              Command="{Binding UpdateMessages}}"/>
+
+    <Shell.FlyoutFooterTemplate>
+        <DataTemplate>
+            <StackLayout>
+                <Button Text="Выйти из аккаунта"
+                        Margin="10"
+                        CornerRadius="10"
+                        BackgroundColor="Gray"
+                        Command="{Binding LogOff}}"/>
+            </StackLayout>
+        </DataTemplate>
+    </Shell.FlyoutFooterTemplate>
+</Shell>
