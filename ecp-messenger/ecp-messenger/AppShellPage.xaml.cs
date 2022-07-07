@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using ecp_messenger.Services;
+using ecp_messenger.Views;
 
 namespace ecp_messenger
-{ 
+{
     public partial class AppShellPage : Shell
     {
 
@@ -21,11 +23,12 @@ namespace ecp_messenger
 
             UpdateMessages = new Command(() =>
             {
+                MySQLService.getInstance().getAllUsers();
                 DisplayAlert("Пока обновления нет...", "Но оно скоро будет!", "Хорошо");
             });
             LogOff = new Command(() =>
             {
-                DisplayAlert("Пока выхода нет...", "Но он скоро будет!", "Хорошо");
+                App.Current.MainPage = new NavigationPage(new LoginPage());
             });
             BindingContext = this;
         }

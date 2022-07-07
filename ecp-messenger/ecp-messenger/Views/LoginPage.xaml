@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ecp_messenger.Views.LoginPage"
+             Title="Авторизация в ECP-Messenger"
+             BackgroundColor="White">
+    <ContentPage.Content>
+        <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+            <StackLayout Orientation="Horizontal">
+                <Image HeightRequest="50"
+                       Margin="10"
+                       Source="messenger_icon.png"
+                       HorizontalOptions="Center"/>
+                <Label Text="ECP-MESSENGER"
+                       TextColor="Black"
+                       FontFamily="Choplin"
+                       FontSize="25"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center"/>
+            </StackLayout>
+            <Entry Placeholder="Введите логин"
+                   FontFamily="Eastman-Light"
+                   x:Name="loginHolder"/>
+            <Entry Placeholder="Введите пароль" IsPassword="True"
+                   FontFamily="Eastman-Light"
+                   x:Name="passwordHolder"/>
+            <Entry Placeholder="Введите IP сервера (51.250.27.157)"
+                   FontFamily="Eastman-Light"
+                   x:Name="hostHolder"/>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+                <CheckBox Color="Black">
+                    <VisualStateManager.VisualStateGroups>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="Color"
+                                            Value="Black" />
+                                </VisualState.Setters>
+                            </VisualState>
+
+                            <VisualState x:Name="IsChecked">
+                                <VisualState.Setters>
+                                    <Setter Property="Color"
+                                            Value="Green" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateManager.VisualStateGroups>
+                </CheckBox>
+                <Label VerticalOptions="Center"
+                       Text="Запомнить меня"
+                       FontFamily="Eastman-Light"/>
+            </StackLayout>
+            <Button Text="Войти в систему"
+                    FontFamily="Eastman-Light"
+                    FontSize="20"
+                    Clicked="Button_Clicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,6 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using ecp_messenger.Views;
 
 [assembly: ExportFont("Choplin-Medium.ttf", Alias = "Choplin")]
 [assembly: ExportFont("Eastman-Light.ttf", Alias = "Eastman-Light")]
@@ -15,7 +16,7 @@ namespace ecp_messenger
         {
             InitializeComponent();
 
-            MainPage = new AppShellPage();
+            MainPage = new NavigationPage(new LoginPage());
         }
 
         protected override void OnStart()

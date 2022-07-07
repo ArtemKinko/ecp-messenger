@@ -25,16 +25,16 @@
 
     <MenuItem Text="Обновить сообщения"
               IconImageSource="refresh_icon.png"
-              Command="{Binding UpdateMessages}}"/>
+              Command="{Binding UpdateMessages}"/>
 
     <Shell.FlyoutFooterTemplate>
         <DataTemplate>
             <StackLayout>
-                <Button Text="Выйти из аккаунта"
+                <Button x:Name="logOffButton" Text="Выйти из аккаунта"
                         Margin="10"
                         CornerRadius="10"
                         BackgroundColor="Gray"
-                        Command="{Binding LogOff}}"/>
+                        Command="{Binding LogOff}"/>
             </StackLayout>
         </DataTemplate>
     </Shell.FlyoutFooterTemplate>

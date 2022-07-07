@@ -9,18 +9,18 @@
 
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
-                <RowDefinition Height="70" />
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="70"/>
             </Grid.RowDefinitions>
             <ScrollView Grid.Row="0" Grid.Column="0" Margin="10">
                 <StackLayout x:Name="BubbleContainer">
                     <Label Text="Это начало переписки. Начните общаться!"
-                       FontFamily="Eastman-Light"
-                       FontSize="30"
-                       HorizontalTextAlignment="Center"/>
+                           FontFamily="Eastman-Light"
+                           FontSize="30"
+                           HorizontalTextAlignment="Center"/>
                 </StackLayout>
             </ScrollView>
-            <Grid Margin="5" Grid.Row="1" Grid.Column="0">
+            <Grid Margin="10" Grid.Row="1" Grid.Column="0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="4*" />
                     <ColumnDefinition Width="*" />
