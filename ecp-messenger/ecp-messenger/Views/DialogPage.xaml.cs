@@ -39,7 +39,7 @@ namespace ecp_messenger.Views
                 {
                     if (needToClose)
                         return false;
-                    List<Message> messages = UserSession.getInstance().updateMessages(username);
+                    List<Message> messages = UserSession.getInstance().updateMessages(UserSession.getInstance().username);
                     if (messages.Count == 0)
                         return true;
                     else
