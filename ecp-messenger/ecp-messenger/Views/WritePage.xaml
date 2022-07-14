@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             x:Class="ecp_messenger.Views.WritePage"
+             Title="Создание нового диалога"
+             BackgroundColor="Transparent">
+  <ContentPage.Content>
+        <Grid>
+            <BoxView BackgroundColor="Black" Opacity="0.5">
+                
+            </BoxView>
+            <AbsoluteLayout VerticalOptions="Center" HorizontalOptions="Center">
+                <BoxView BackgroundColor="Black" Opacity="1"
+                         CornerRadius="10"
+                         AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                         AbsoluteLayout.LayoutFlags="All">
+                </BoxView>
+                <StackLayout WidthRequest="300" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" Margin="10">
+                    <Label Text="Логин получателя:" HorizontalOptions="Center"
+                           TextColor = "LightGray" FontSize="20"
+                           FontFamily="Eastman-Medium"></Label>
+                    <Entry Placeholder="Admin" x:Name="user"
+                           TextColor = "LightPink" PlaceholderColor="DarkGray"
+                           FontFamily="Eastman-Light"></Entry>
+                    <Label Text="Сообщение:" HorizontalOptions="Center"
+                           TextColor = "LightGray" FontSize="20"
+                           FontFamily="Eastman-Medium"></Label>
+                    <Editor Placeholder="Hello World!" x:Name="message"
+                            TextColor = "LightPink" PlaceholderColor="DarkGray"
+                            FontFamily="Eastman-Light"
+                            HeightRequest="100">
+                    </Editor>
+                    <Button Text="Отправить" FontFamily="Eastman-Medium"
+                            xct:TouchEffect.AnimationDuration="100"
+                            xct:TouchEffect.AnimationEasing="CubicInOut"
+                            xct:TouchEffect.PressedScale="0.8"
+                            FontSize="20"
+                            BackgroundColor="LightGray"
+                            CornerRadius="20" Clicked="SendMessage">
+                    </Button>
+                    <Button Text="Назад" FontFamily="Eastman-Medium"
+                            xct:TouchEffect.AnimationDuration="100"
+                            xct:TouchEffect.AnimationEasing="CubicInOut"
+                            xct:TouchEffect.PressedScale="0.8"
+                            FontSize="20"
+                            BackgroundColor="LightGray"
+                            CornerRadius="20" Clicked="ClosePage">
+                    </Button>
+                </StackLayout>
+            </AbsoluteLayout>
+            
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

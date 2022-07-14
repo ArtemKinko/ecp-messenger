@@ -15,12 +15,13 @@ namespace ecp_messenger
         public App()
         {
             InitializeComponent();
-
-            MainPage = new NavigationPage(new LoginPage());
+            Device.SetFlags(new[] { "Brush_Experimental" });
+            MainPage = new LoginPage();
         }
 
         protected override void OnStart()
         {
+
         }
 
         protected override void OnSleep()

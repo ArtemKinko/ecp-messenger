@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             x:Class="ecp_messenger.Views.ContactsPage"
+             Title="Выбор диалога (всего: 0)">
+    <ContentPage.Content>
+        <Grid>
+            <BoxView x:Name="bgGradientLogin">
+                <BoxView.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#12C2E9" Offset="0.1"/>
+                        <GradientStop Color="#C471ED" Offset="0.5"/>
+                        <GradientStop Color="#F64F59" Offset="1.0"/>
+                    </LinearGradientBrush>
+                </BoxView.Background>
+            </BoxView>
+
+            <ScrollView>
+                <StackLayout x:Name="FrameContainer" Spacing="0" Padding="0">
+                    <Frame BackgroundColor="Transparent" VerticalOptions="Start">
+                        <Grid Padding="-10" BackgroundColor="Transparent">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <AbsoluteLayout ClassId="write" HeightRequest="200" HorizontalOptions="Fill" VerticalOptions="Fill"
+                                            xct:TouchEffect.AnimationDuration="100"
+                                            xct:TouchEffect.AnimationEasing="CubicInOut"
+                                            xct:TouchEffect.PressedScale="0.8">
+                                <AbsoluteLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="WriteMessage"/>
+                                </AbsoluteLayout.GestureRecognizers>
+                                <BoxView TranslationX="2" TranslationY="2" Scale="1.02" BackgroundColor="Black" Margin="10"
+                                         CornerRadius="10"
+                                         AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                                         AbsoluteLayout.LayoutFlags="All">
+                                </BoxView>
+                                <BoxView x:Name="tempBox" BackgroundColor="LightGray" Margin="10"
+                                         CornerRadius="10" Color="Wheat"
+                                         AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                                         AbsoluteLayout.LayoutFlags="All">
+                                </BoxView>
+                                <Grid>
+                                    <Image Source="add_icon" Margin="30, 10, 30, 10" BackgroundColor="Transparent">
+                                    </Image>
+                                    <Label Grid.Row="1" Text="Написать" HorizontalOptions="Center"
+                               FontSize="20" Padding="0" FontFamily="Eastman-Light">
+                                    </Label>
+                                </Grid>
+                            </AbsoluteLayout>
+
+                            <AbsoluteLayout ClassId="" x:Name="FirstDialog" IsVisible="false" HeightRequest="200" Grid.Column="1" HorizontalOptions="Fill" VerticalOptions="Fill"
+                                            xct:TouchEffect.AnimationDuration="100"
+                                            xct:TouchEffect.AnimationEasing="CubicInOut"
+                                            xct:TouchEffect.PressedScale="0.8">
+                                <AbsoluteLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OpenDialog"/>
+                                </AbsoluteLayout.GestureRecognizers>
+                                <BoxView TranslationX="2" TranslationY="2" Scale="1.02" BackgroundColor="Black" Margin="10"
+                                         CornerRadius="10"
+                                         AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                                         AbsoluteLayout.LayoutFlags="All">
+                                </BoxView>
+                                <BoxView BackgroundColor="LightGray" Margin="10"
+                                         CornerRadius="10"
+                                         AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                                         AbsoluteLayout.LayoutFlags="All">
+                                </BoxView>
+                                <Grid>
+                                    <Image Source="user_icon" Margin="30, 10, 30, 10" BackgroundColor="Transparent">
+                                    </Image>
+                                    <Label x:Name="FirstUsername" Grid.Row="1" Text="USERNAME" HorizontalOptions="CenterAndExpand"
+                               FontSize="20" Padding="0" FontFamily="Eastman-Light">
+                                    </Label>
+                                </Grid>
+                            </AbsoluteLayout>
+                        </Grid>
+                    </Frame>
+
+                </StackLayout>
+            </ScrollView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

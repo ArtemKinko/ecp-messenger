@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
+using Xamarin.Essentials;
 using Xamarin.Forms.Xaml;
 using ecp_messenger.Services;
 using ecp_messenger.Views;
@@ -14,23 +15,39 @@ namespace ecp_messenger
     public partial class AppShellPage : Shell
     {
 
-        public Command UpdateMessages { private set; get; }
-        public Command LogOff { private set; get; }
-
         public AppShellPage()
         {
             InitializeComponent();
+        }
 
-            UpdateMessages = new Command(() =>
-            {
-                MySQLService.getInstance().getAllUsers();
-                DisplayAlert("Пока обновления нет...", "Но оно скоро будет!", "Хорошо");
-            });
-            LogOff = new Command(() =>
-            {
-                App.Current.MainPage = new NavigationPage(new LoginPage());
-            });
-            BindingContext = this;
+        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
+            DisplayAlert("OK", "OK", "OK");
+        }
+
+        private void GoToDialogs(object sender, EventArgs e)
+        {
+            Shell.Current.GoToAsync("//dialogs");
+            Shell.Current.FlyoutIsPresented = false;
+        }
+
+        async private void UpdateMessages(object sender, EventArgs e)
+        {
+            Navigation.PushModalAsync(new LoadingPage(), false);
+            App.Current.MainPage = new AppShellPage();
+            DisplayAlert("Успешно обновлено!", "База данных сообщений обновлена", "Ок");
+        }
+
+        private void GoToSettings(object sender, EventArgs e)
+        {
+            Shell.Current.GoToAsync("//settings");
+            Shell.Current.FlyoutIsPresented = false;
+        }
+
+        private void LogOff(object sender, EventArgs e)
+        {
+            Preferences.Clear();
+            App.Current.MainPage = new LoginPage();
         }
     }
 }

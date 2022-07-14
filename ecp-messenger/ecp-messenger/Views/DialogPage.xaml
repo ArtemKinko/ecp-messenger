@@ -2,37 +2,47 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
-             BackgroundImageSource="dialog_background_blue.png"
              x:Class="ecp_messenger.Views.DialogPage"
-             Title="Диалог с USERNAME">
+             Title="Диалог с USERNAME"
+             Disappearing="closePage">
     <ContentPage.Content>
 
         <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="70"/>
-            </Grid.RowDefinitions>
-            <ScrollView Grid.Row="0" Grid.Column="0" Margin="10">
-                <StackLayout x:Name="BubbleContainer">
-                    <Label Text="Это начало переписки. Начните общаться!"
+            <BoxView x:Name="bgGradientLogin">
+                <BoxView.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#F64F59" Offset="0.1"/>
+                        <GradientStop Color="#C471ED" Offset="0.5"/>
+                        <GradientStop Color="#12C2E9" Offset="1.0"/>
+                    </LinearGradientBrush>
+                </BoxView.Background>
+            </BoxView>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="70"/>
+                </Grid.RowDefinitions>
+                <ScrollView x:Name="ScrollView" Padding="0" Grid.Row="0" Grid.Column="0" Margin="0">
+                    <StackLayout x:Name="BubbleContainer">
+                        <Label Text="Это начало переписки. Начните общаться!"
                            FontFamily="Eastman-Light"
                            FontSize="30"
                            HorizontalTextAlignment="Center"/>
-                </StackLayout>
-            </ScrollView>
-            <Grid Margin="10" Grid.Row="1" Grid.Column="0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="4*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <Editor x:Name="MessageEditor" Grid.Column="0" Grid.Row="0"
+                    </StackLayout>
+                </ScrollView>
+                <Grid Margin="10" Grid.Row="1" Grid.Column="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="4*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Editor x:Name="MessageEditor" Grid.Column="0" Grid.Row="0"
                     Placeholder="Введите сообщение"
                     HeightRequest="60"
                         WidthRequest="300"
                     AutoSize="TextChanges"
                     FontFamily="Eastman-Light">
-                </Editor>
-                <ImageButton Grid.Column="1" Grid.Row="0"
+                    </Editor>
+                    <ImageButton Grid.Column="1" Grid.Row="0"
                              Source="send_icon.png"
                              BackgroundColor="Transparent"
                              Clicked="SendButton_Clicked"
@@ -40,6 +50,7 @@
                              xct:TouchEffect.AnimationEasing="{x:Static Easing.CubicInOut}"
                              xct:TouchEffect.PressedScale="0.75"
                              xct:TouchEffect.PressedOpacity="0.75"/>
+                </Grid>
             </Grid>
         </Grid>
     </ContentPage.Content>

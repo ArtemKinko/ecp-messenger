@@ -4,7 +4,7 @@
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              x:Class="ecp_messenger.Views.MenuHeader"
              HeightRequest="150"
-             BackgroundColor="Gray">
+             BackgroundColor="#9e0846">
     <StackLayout HeightRequest="200" HorizontalOptions="Center" Padding="10">
         <StackLayout Orientation="Horizontal">
             <Image HeightRequest="50"
@@ -22,7 +22,7 @@
                FontSize="20"
                TextColor="White"
                HorizontalTextAlignment="Center"/>
-        <Label Text="USERNAME"
+        <Label x:Name="UsernameLabel" Text="USERNAME"
                FontFamily="Eastman-Meduim"
                FontSize="20"
                TextColor="White"

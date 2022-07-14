@@ -1,60 +1,121 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ecp_messenger.Views.LoginPage"
-             Title="Авторизация в ECP-Messenger"
-             BackgroundColor="White">
-    <ContentPage.Content>
-        <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
-            <StackLayout Orientation="Horizontal">
-                <Image HeightRequest="50"
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+            x:Class="ecp_messenger.Views.LoginPage"
+            Title="Авторизация в ECP-Messenger"
+            android:TabbedPage.ToolbarPlacement="Bottom"
+            android:TabbedPage.BarBackgroundColor="#a426c7"
+            android:TabbedPage.BarItemColor="Black"
+            android:TabbedPage.BarSelectedItemColor="Cornsilk">
+
+    <ContentPage Title="Авторизация"
+                 IconImageSource="login_icon"
+                 BackgroundImageSource="background_green.png">
+
+        <Grid>
+            <BoxView x:Name="bgGradientLogin">
+                <BoxView.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#12C2E9" Offset="0.2"/>
+                        <GradientStop Color="#C471ED" Offset="0.66"/>
+                        <GradientStop Color="#F64F59" Offset="1.0"/>
+                    </LinearGradientBrush>
+                </BoxView.Background>
+            </BoxView>
+            <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                <StackLayout Orientation="Horizontal">
+                    <Image HeightRequest="50"
                        Margin="10"
                        Source="messenger_icon.png"
                        HorizontalOptions="Center"/>
-                <Label Text="ECP-MESSENGER"
+                    <Label Text="ECP-MESSENGER"
                        TextColor="Black"
                        FontFamily="Choplin"
                        FontSize="25"
                        HorizontalTextAlignment="Center"
                        VerticalTextAlignment="Center"/>
-            </StackLayout>
-            <Entry Placeholder="Введите логин"
+                </StackLayout>
+                <Entry Placeholder="Введите логин"
                    FontFamily="Eastman-Light"
                    x:Name="loginHolder"/>
-            <Entry Placeholder="Введите пароль" IsPassword="True"
+                <Entry Placeholder="Введите пароль" IsPassword="True"
                    FontFamily="Eastman-Light"
                    x:Name="passwordHolder"/>
-            <Entry Placeholder="Введите IP сервера (51.250.27.157)"
+                <Entry Text="51.250.21.110" Placeholder="Введите IP сервера (51.250.21.110)"
                    FontFamily="Eastman-Light"
                    x:Name="hostHolder"/>
-            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
-                <CheckBox Color="Black">
-                    <VisualStateManager.VisualStateGroups>
-                        <VisualStateGroup x:Name="CommonStates">
-                            <VisualState x:Name="Normal">
-                                <VisualState.Setters>
-                                    <Setter Property="Color"
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+                    <CheckBox x:Name="saveCheckBox" Color="Black">
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal">
+                                    <VisualState.Setters>
+                                        <Setter Property="Color"
                                             Value="Black" />
-                                </VisualState.Setters>
-                            </VisualState>
+                                    </VisualState.Setters>
+                                </VisualState>
 
-                            <VisualState x:Name="IsChecked">
-                                <VisualState.Setters>
-                                    <Setter Property="Color"
-                                            Value="Green" />
-                                </VisualState.Setters>
-                            </VisualState>
-                        </VisualStateGroup>
-                    </VisualStateManager.VisualStateGroups>
-                </CheckBox>
-                <Label VerticalOptions="Center"
+                                <VisualState x:Name="IsChecked">
+                                    <VisualState.Setters>
+                                        <Setter Property="Color"
+                                            Value="#5D26C1" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </CheckBox>
+                    <Label VerticalOptions="Center"
                        Text="Запомнить меня"
                        FontFamily="Eastman-Light"/>
-            </StackLayout>
-            <Button Text="Войти в систему"
-                    FontFamily="Eastman-Light"
+                </StackLayout>
+                <Button Text="Войти в систему" x:Name="buttonLogin"
+                    FontFamily="Eastman-Medium"
                     FontSize="20"
                     Clicked="Button_Clicked"/>
-        </StackLayout>
-    </ContentPage.Content>
-</ContentPage>
+            </StackLayout>
+        </Grid>
+    </ContentPage>
+
+    <ContentPage Title="Регистрация" IconImageSource="register_icon.png"
+                 BackgroundImageSource="background_pink">
+        <Grid>
+            <BoxView x:Name="bgGradientReg">
+                <BoxView.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#59C173" Offset="0.2"/>
+                        <GradientStop Color="#A17FE0" Offset="0.66"/>
+                        <GradientStop Color="#5D26C1" Offset="1.0"/>
+                    </LinearGradientBrush>
+                </BoxView.Background>
+            </BoxView>
+            <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                <StackLayout Orientation="Horizontal">
+                    <Image HeightRequest="50"
+                       Margin="10"
+                       Source="messenger_icon.png"
+                       HorizontalOptions="Center"/>
+                    <Label Text="ECP-MESSENGER"
+                       TextColor="Black"
+                       FontFamily="Choplin"
+                       FontSize="25"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center"/>
+                </StackLayout>
+                <Entry Placeholder="Введите логин"
+                   FontFamily="Eastman-Light"
+                   x:Name="loginHolderReg"/>
+                <Entry Placeholder="Введите пароль" IsPassword="True"
+                   FontFamily="Eastman-Light"
+                   x:Name="passwordHolderReg"/>
+                <Entry Placeholder="Введите IP сервера (51.250.27.157)"
+                   FontFamily="Eastman-Light"
+                   x:Name="hostHolderReg"/>
+                <Button Text="Зарегистрироваться" x:Name="buttonReg"
+                    FontFamily="Eastman-Medium"
+                    FontSize="20"
+                    Clicked="Button_Clicked"/>
+            </StackLayout>
+        </Grid>
+    </ContentPage>
+</TabbedPage>

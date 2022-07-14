@@ -3,9 +3,9 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
-    <PackageIcon>main_logo.jpg</PackageIcon>
+    <PackageIcon>ic_launcher.png</PackageIcon>
     <Authors>ArtemKinko</Authors>
-    <Version>0.1-beta</Version>
+    <Version>0.9</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -21,6 +21,7 @@
   <ItemGroup>
     <EmbeddedResource Include="Fonts\Choplin-Medium.ttf" />
     <EmbeddedResource Include="Fonts\Eastman-Light.ttf" />
+    <EmbeddedResource Include="Fonts\Eastman-Medium.ttf" />
   </ItemGroup>
 
   <ItemGroup>
@@ -32,7 +33,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Views\ContactsPage.xaml.cs">
+      <DependentUpon>ContactsPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
     <EmbeddedResource Update="AppShellPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ContactsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\DialogPage.xaml">
@@ -48,6 +58,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\SettingsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\WritePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
