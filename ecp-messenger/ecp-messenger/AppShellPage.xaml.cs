@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ecp_messenger.Models;
 
 using Xamarin.Forms;
 using Xamarin.Essentials;
@@ -34,6 +35,7 @@ namespace ecp_messenger
         async private void UpdateMessages(object sender, EventArgs e)
         {
             Navigation.PushModalAsync(new LoadingPage(), false);
+            UserSession.getInstance().initDialogs();
             App.Current.MainPage = new AppShellPage();
             DisplayAlert("Успешно обновлено!", "База данных сообщений обновлена", "Ок");
         }
