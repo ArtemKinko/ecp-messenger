@@ -39,7 +39,7 @@ namespace ecp_messenger.Models
             List<Message> mesRet = new List<Message>();
             try
             { 
-                List<Message> mes = MySQLService.getInstance().getAllMessagesMoreThan(username, lastMessageId);
+                List<Message> mes = MySQLService.getInstance().getAllMessagesMoreThan(this.username, lastMessageId);
                 foreach (Message m in mes)
                 {
                     lastMessageId = m.Id;

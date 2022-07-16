@@ -23,6 +23,7 @@ namespace ecp_messenger.Views
         public string text;
         bool needToClose = false;
         public string toUsername;
+        private List<Message> messages;
         CancellationTokenSource ts = new CancellationTokenSource();
 
         public DialogPage(string username)
@@ -32,14 +33,26 @@ namespace ecp_messenger.Views
             initializeMessages(username);
             Title = "Диалог с  «" + username + "»";
             CancellationToken ct = ts.Token;
+            messages = new List<Message>();
+
+            Device.StartTimer(new TimeSpan(0, 0, 1), () =>
+            {
+                if (needToClose)
+                    return false;
+                
+                Task.Run(async () =>
+                {
+                    messages = UserSession.getInstance().updateMessages(username);
+                });
+                return true;
+            });
 
             Task.Factory.StartNew(() =>
             {
-                Device.StartTimer(new TimeSpan(0, 0, 5), () =>
+                Device.StartTimer(new TimeSpan(0, 0, 0, 0, 100), () =>
                 {
                     if (needToClose)
                         return false;
-                    List<Message> messages = UserSession.getInstance().updateMessages(username);
                     if (messages.Count == 0)
                         return true;
                     else
@@ -48,10 +61,13 @@ namespace ecp_messenger.Views
                             CreateMessage(message.fromId == UserSession.getInstance().id ? true : false,
                                 message.text, message.sendTime);
                         System.Diagnostics.Debug.WriteLine(messages.Count);
+                        messages.Clear();
+                        var lastChild = ((StackLayout)FindByName("BubbleContainer")).Children.LastOrDefault();
+                        ((ScrollView)FindByName("ScrollView")).ScrollToAsync(lastChild, ScrollToPosition.MakeVisible, true);
                     }
                     return true;
                 });
-            }, ct);
+            });
         }
 
         async private void initializeMessages(string username)
@@ -84,17 +100,25 @@ namespace ecp_messenger.Views
             else
                 return;
 
-            MySQLService.getInstance().insertMessage(new Message
+            Device.StartTimer(new TimeSpan(0, 0, 0), () =>
             {
-                fromId = UserSession.getInstance().id,
-                toId = MySQLService.getInstance().findIdByUsername(toUsername),
-                text = messageText,
-                sendTime = DateTime.Now.Year + "-" + DateTime.Now.Month + "-"
-                + DateTime.Now.Day + " " + DateTime.Now.Hour + ":" + DateTime.Now.Minute + ":"
-                + DateTime.Now.Second
-            }) ;
-            UserSession.getInstance().updateMessages(toUsername);
-            await Task.Delay(100);
+                Task.Run(async () =>
+                {
+                    MySQLService.getInstance().insertMessage(new Message
+                    {
+                        fromId = UserSession.getInstance().id,
+                        toId = MySQLService.getInstance().findIdByUsername(toUsername),
+                        text = messageText,
+                        sendTime = DateTime.Now.Year + "-" + DateTime.Now.Month + "-"
+                        + DateTime.Now.Day + " " + DateTime.Now.Hour + ":" + DateTime.Now.Minute + ":"
+                        + DateTime.Now.Second
+                    });
+                    UserSession.getInstance().updateMessages(toUsername);
+                    await Task.Delay(100);
+                });
+                return false;
+            });
+
             var lastChild = ((StackLayout)FindByName("BubbleContainer")).Children.LastOrDefault();
             await ((ScrollView)FindByName("ScrollView")).ScrollToAsync(lastChild, ScrollToPosition.MakeVisible, true);
         }

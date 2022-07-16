@@ -8,10 +8,9 @@
         <Grid>
             <BoxView x:Name="bgGradientLogin">
                 <BoxView.Background>
-                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                        <GradientStop Color="#12C2E9" Offset="0.1"/>
-                        <GradientStop Color="#C471ED" Offset="0.5"/>
-                        <GradientStop Color="#F64F59" Offset="1.0"/>
+                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                        <GradientStop Color="#957b8d" Offset="0.2"/>
+                        <GradientStop Color="#755d9a" Offset="0.66"/>
                     </LinearGradientBrush>
                 </BoxView.Background>
             </BoxView>
@@ -42,11 +41,8 @@
                                          AbsoluteLayout.LayoutFlags="All">
                                 </BoxView>
                                 <Grid>
-                                    <Image Source="add_icon" Margin="30, 10, 30, 10" BackgroundColor="Transparent">
+                                    <Image Source="add_icon" Margin="20, 25, 20, 0" BackgroundColor="Transparent">
                                     </Image>
-                                    <Label Grid.Row="1" Text="Написать" HorizontalOptions="Center"
-                               FontSize="20" Padding="0" FontFamily="Eastman-Light">
-                                    </Label>
                                 </Grid>
                             </AbsoluteLayout>
 

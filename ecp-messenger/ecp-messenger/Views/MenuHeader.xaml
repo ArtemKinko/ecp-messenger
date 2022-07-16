@@ -4,28 +4,20 @@
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              x:Class="ecp_messenger.Views.MenuHeader"
              HeightRequest="150"
-             BackgroundColor="#9e0846">
-    <StackLayout HeightRequest="200" HorizontalOptions="Center" Padding="10">
-        <StackLayout Orientation="Horizontal">
-            <Image HeightRequest="50"
-                       Margin="10"
+             BackgroundColor="#75548c">
+    <StackLayout HorizontalOptions="Center" Padding="0">
+        <Image HeightRequest="50"
+                       Margin="0, 10, 0, 0"
                        Source="messenger_icon.png"/>
-            <Label Text="ECP-MESSENGER"
-                       TextColor="Black"
-                       FontFamily="Choplin"
-                       FontSize="25"
-                       HorizontalTextAlignment="Center"
-                       VerticalTextAlignment="Center"/>
-        </StackLayout>
         <Label Text="Добро пожаловать,"
                FontFamily="Eastman-Light"
                FontSize="20"
-               TextColor="White"
+               TextColor="LightGray"
                HorizontalTextAlignment="Center"/>
         <Label x:Name="UsernameLabel" Text="USERNAME"
                FontFamily="Eastman-Meduim"
                FontSize="20"
-               TextColor="White"
+               TextColor="LightGray"
                HorizontalTextAlignment="Center"/>
     </StackLayout>
 </ContentView>

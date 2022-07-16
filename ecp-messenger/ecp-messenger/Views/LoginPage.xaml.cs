@@ -20,9 +20,11 @@ namespace ecp_messenger.Views
             InitializeComponent();
             if (Preferences.ContainsKey("username") && (Preferences.ContainsKey("password")))
             {
-                ((Entry)FindByName("loginHolder")).Text = Preferences.Get("username", "null");
-                ((Entry)FindByName("passwordHolder")).Text = Preferences.Get("password", "null");
+                ((Entry)FindByName("loginHolder")).Text = Preferences.Get("username", "");
+                ((Entry)FindByName("passwordHolder")).Text = Preferences.Get("password", "");
+                ((Entry)FindByName("hostHolder")).Text = Preferences.Get("host", "");
                 Button_Clicked((Button)FindByName("buttonLogin"), null);
+                ((CheckBox)FindByName("saveCheckBox")).IsChecked = true;
             }
         }
 
@@ -45,27 +47,29 @@ namespace ecp_messenger.Views
             }
             if (login == null || login == "")
             {
-                await DisplayAlert("Неправильные данные", "Не введен логин", "Ввести");
+                await DisplayAlert("Неправильные данные", "Не введен логин", "Ой");
                 await Navigation.PopModalAsync(false);
                 return;
             }
             else if (password == null || password == "")
             {
-                await DisplayAlert("Неправильные данные", "Не введен пароль", "Ввести");
+                await DisplayAlert("Неправильные данные", "Не введен пароль", "Ой");
                 await Navigation.PopModalAsync(false);
                 return;
             }
             if (host == null || host == "")
             {
-                host = "51.250.21.110";
+                await DisplayAlert("Неправильные данные", "Не введен IP сервера", "Ой");
+                await Navigation.PopModalAsync(false);
+                return;
             }
             MySQLService.getInstance(host).updateHost(host);
             if (((CheckBox)FindByName("saveCheckBox")).IsChecked)
             {
                 Preferences.Set("username", login);
                 Preferences.Set("password", password);
+                Preferences.Set("host", host);
             }
-
 
             if ((Button)sender == (Button)FindByName("buttonLogin"))
             {
@@ -129,6 +133,24 @@ namespace ecp_messenger.Views
                 }
             }
 
+        }
+
+        async public void ChangeBarColor(Object sender, EventArgs eventArgs)
+        {
+            Color color = new Color();
+            if (sender == FindByName("LogPage"))
+                color = new Color(0.419, 0.329, 0.549);
+            else
+                color = new Color(0.529, 0.439, 0.502);
+
+            Device.StartTimer(TimeSpan.FromMilliseconds(50), () =>
+            {
+                Task.Run(async () =>
+                {
+                    BarBackgroundColor = color;
+                });
+                return false;
+            });
         }
     }
 }

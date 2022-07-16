@@ -4,14 +4,15 @@
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              x:Class="ecp_messenger.Views.WritePage"
              Title="Создание нового диалога"
-             BackgroundColor="Transparent">
+             BackgroundColor="Transparent"
+             Appearing="AppearOpacityChange">
   <ContentPage.Content>
         <Grid>
-            <BoxView BackgroundColor="Black" Opacity="0.5">
+            <BoxView BackgroundColor="Black" x:Name="background" Opacity="0">
                 
             </BoxView>
             <AbsoluteLayout VerticalOptions="Center" HorizontalOptions="Center">
-                <BoxView BackgroundColor="Black" Opacity="1"
+                <BoxView BackgroundColor="#957b8d" Opacity="1"
                          CornerRadius="10"
                          AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
                          AbsoluteLayout.LayoutFlags="All">
@@ -21,32 +22,34 @@
                            TextColor = "LightGray" FontSize="20"
                            FontFamily="Eastman-Medium"></Label>
                     <Entry Placeholder="Admin" x:Name="user"
-                           TextColor = "LightPink" PlaceholderColor="DarkGray"
+                           TextColor = "Black" PlaceholderColor="DarkGray"
                            FontFamily="Eastman-Light"></Entry>
                     <Label Text="Сообщение:" HorizontalOptions="Center"
                            TextColor = "LightGray" FontSize="20"
                            FontFamily="Eastman-Medium"></Label>
                     <Editor Placeholder="Hello World!" x:Name="message"
-                            TextColor = "LightPink" PlaceholderColor="DarkGray"
+                            TextColor = "Black" PlaceholderColor="DarkGray"
                             FontFamily="Eastman-Light"
                             HeightRequest="100">
                     </Editor>
-                    <Button Text="Отправить" FontFamily="Eastman-Medium"
-                            xct:TouchEffect.AnimationDuration="100"
-                            xct:TouchEffect.AnimationEasing="CubicInOut"
-                            xct:TouchEffect.PressedScale="0.8"
-                            FontSize="20"
-                            BackgroundColor="LightGray"
-                            CornerRadius="20" Clicked="SendMessage">
-                    </Button>
-                    <Button Text="Назад" FontFamily="Eastman-Medium"
-                            xct:TouchEffect.AnimationDuration="100"
-                            xct:TouchEffect.AnimationEasing="CubicInOut"
-                            xct:TouchEffect.PressedScale="0.8"
-                            FontSize="20"
-                            BackgroundColor="LightGray"
-                            CornerRadius="20" Clicked="ClosePage">
-                    </Button>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                        <Button Text="Назад" FontFamily="Eastman-Medium"
+                                xct:TouchEffect.AnimationDuration="100"
+                                xct:TouchEffect.AnimationEasing="CubicInOut"
+                                xct:TouchEffect.PressedScale="0.8"
+                                FontSize="20"
+                                BackgroundColor="LightGray"
+                                CornerRadius="20" Clicked="ClosePage">
+                        </Button>
+                        <Button Text="Отправить" FontFamily="Eastman-Medium"
+                                xct:TouchEffect.AnimationDuration="100"
+                                xct:TouchEffect.AnimationEasing="CubicInOut"
+                                xct:TouchEffect.PressedScale="0.8"
+                                FontSize="20"
+                                BackgroundColor="LightGray"
+                                CornerRadius="20" Clicked="SendMessage">
+                        </Button>
+                    </StackLayout>
                 </StackLayout>
             </AbsoluteLayout>
             

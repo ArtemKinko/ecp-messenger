@@ -67,7 +67,6 @@ namespace ecp_messenger.Services
                 System.Diagnostics.Debug.WriteLine(users[0].Username);
                 System.Diagnostics.Debug.WriteLine(users[0].Password);
             }
-            connection.Close();
         }
 
         public bool checkUserAccess(string username, string password)
@@ -144,6 +143,7 @@ namespace ecp_messenger.Services
                     System.Diagnostics.Debug.WriteLine(ex.Message);
                 }
             }
+            connection.Close();
             return messages;
         }
 

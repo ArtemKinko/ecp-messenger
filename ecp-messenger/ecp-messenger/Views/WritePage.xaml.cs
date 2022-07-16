@@ -55,7 +55,7 @@ namespace ecp_messenger.Views
                 });
                 UserSession.getInstance().initDialogs();
                 await DisplayAlert("Успешная отправка", "Воспользуйтесь кнопкой в меню, чтобы обновить сообщения", "Ок");
-                await Navigation.PopModalAsync();
+                ClosePage(this, null);
             }
             else
             {
@@ -65,7 +65,36 @@ namespace ecp_messenger.Views
 
         async public void ClosePage(Object sender, EventArgs eventArgs)
         {
+            Device.StartTimer(TimeSpan.FromMilliseconds(0), () =>
+            {
+                Task.Run(async () =>
+                {
+                    for (int counter = 70; counter >= 0; counter--)
+                    {
+                        await Task.Delay(5);
+                        ((BoxView)FindByName("background")).Opacity = counter * 0.01;
+                    }
+                });
+                return false;
+            });
+            await Task.Delay(320);
             await Navigation.PopModalAsync();
+        }
+
+        async public void AppearOpacityChange(Object sender, EventArgs eventArgs)
+        {
+            Device.StartTimer(TimeSpan.FromMilliseconds(300), () =>
+            {
+                Task.Run(async () =>
+                {
+                    for (int counter = 0; counter < 70; counter++)
+                    {
+                        await Task.Delay(5);
+                        ((BoxView)FindByName("background")).Opacity = counter * 0.01;
+                    }
+                });
+                return false;
+            });
         }
     }
 }

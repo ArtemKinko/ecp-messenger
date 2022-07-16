@@ -5,13 +5,15 @@
        xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
        x:Class="ecp_messenger.AppShellPage"
        x:Name="myTabBars"
-       FlyoutBackgroundColor="#f5bae0">
+       FlyoutBackgroundColor="#a18cbf"
+       BackgroundColor="Black"
+       FlyoutWidth="150">
 
     <Shell.FlyoutHeader>
         <pages:MenuHeader/>
     </Shell.FlyoutHeader>
 
-    <ShellContent Shell.BackgroundColor="#730030" x:Name="dialogs" ContentTemplate="{DataTemplate pages:ContactsPage}" Route="dialogs"/>
+    <ShellContent Shell.BackgroundColor="#6b548c" x:Name="dialogs" ContentTemplate="{DataTemplate pages:ContactsPage}" Route="dialogs"/>
     <ShellContent ContentTemplate="{DataTemplate pages:SettingsPage}" Route="settings"/>
 
     <Shell.ItemTemplate>
@@ -22,17 +24,18 @@
     
     <Shell.FlyoutFooterTemplate>
         <DataTemplate>
-            <Grid HeightRequest="600" Padding="10" Margin="0, 0, 0, 0">
+            <Grid HeightRequest="650" Padding="10" Margin="0, 0, 0, 0">
                 <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
+                    <RowDefinition Height="3*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="3*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="3*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="3*"/>
+                    <RowDefinition Height="3*"/>
                 </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <AbsoluteLayout Grid.Row="0" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+                <AbsoluteLayout Grid.Row="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
                                 xct:TouchEffect.AnimationDuration="100"
                                 xct:TouchEffect.AnimationEasing="CubicInOut"
                                 xct:TouchEffect.PressedScale="0.8">
@@ -44,21 +47,21 @@
                              CornerRadius="10"
                              AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
                              AbsoluteLayout.LayoutFlags="All"/>
-                    <BoxView BackgroundColor="#e384c2" Margin="10"
+                    <BoxView BackgroundColor="#a56db5" Margin="10"
                              CornerRadius="10"
                              AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
                              AbsoluteLayout.LayoutFlags="All">
                     </BoxView>
                     <Grid>
-                        <Image Source="user_icon" Margin="10, 0, 10, -10" BackgroundColor="Transparent">
+                        <Image Source="user_icon" Margin="20, 10, 10, 0" BackgroundColor="Transparent">
                         </Image>
                         <Label Grid.Row="1" Text="Диалоги" HorizontalOptions="Center"
-                               FontSize="20" Padding="0" FontFamily="Eastman-Light">
+                               FontSize="20" Padding="15, 0, 0, 0" FontFamily="Eastman-Light">
                         </Label>
                     </Grid>
                 </AbsoluteLayout>
 
-                <AbsoluteLayout Grid.Row="0" Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+                <AbsoluteLayout Grid.Row="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
                                 xct:TouchEffect.AnimationDuration="100"
                                 xct:TouchEffect.AnimationEasing="CubicInOut"
                                 xct:TouchEffect.PressedScale="0.8">
@@ -70,21 +73,21 @@
                              CornerRadius="10"
                              AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
                              AbsoluteLayout.LayoutFlags="All"/>
-                    <BoxView BackgroundColor="#e384c2" Margin="10"
+                    <BoxView BackgroundColor="#a56db5" Margin="10"
                              CornerRadius="10"
                              AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
                              AbsoluteLayout.LayoutFlags="All">
                     </BoxView>
                     <Grid>
-                        <Image Source="settings_icon" Margin="30, 20, 30, 10" BackgroundColor="Transparent">
+                        <Image Source="settings_icon" Margin="35, 20, 30, 10" BackgroundColor="Transparent">
                         </Image>
                         <Label Grid.Row="1" Text="Настройки" HorizontalOptions="Center"
-                               FontSize="20" Padding="0" FontFamily="Eastman-Light">
+                               FontSize="20" Padding="7, 0, 0, 0" FontFamily="Eastman-Light">
                         </Label>
                     </Grid>
                 </AbsoluteLayout>
 
-                <AbsoluteLayout Grid.Row="1" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+                <AbsoluteLayout Grid.Row="4" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
                                 xct:TouchEffect.AnimationDuration="100"
                                 xct:TouchEffect.AnimationEasing="CubicInOut"
                                 xct:TouchEffect.PressedScale="0.8">
@@ -96,20 +99,20 @@
                              CornerRadius="10"
                              AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
                              AbsoluteLayout.LayoutFlags="All"/>
-                    <BoxView BackgroundColor="#e384c2" Margin="10"
+                    <BoxView BackgroundColor="#a56db5" Margin="10"
                              CornerRadius="10"
                              AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
                              AbsoluteLayout.LayoutFlags="All"/>
                     <Grid>
-                        <Image Source="refresh_icon" Margin="10, 0, 10, -10" BackgroundColor="Transparent">
+                        <Image Source="refresh_icon" Margin="15, 0, 10, -10" BackgroundColor="Transparent">
                         </Image>
                         <Label Grid.Row="1" Text="Обновить" HorizontalOptions="Center"
-                               FontSize="20" Padding="0" FontFamily="Eastman-Light">
+                               FontSize="20" Padding="7, 0, 0, 0" FontFamily="Eastman-Light">
                         </Label>
                     </Grid>
                 </AbsoluteLayout>
 
-                <AbsoluteLayout Grid.Row="1" Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+                <AbsoluteLayout Grid.Row="6" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
                                 xct:TouchEffect.AnimationDuration="100"
                                 xct:TouchEffect.AnimationEasing="CubicInOut"
                                 xct:TouchEffect.PressedScale="0.8">
@@ -121,21 +124,21 @@
                              CornerRadius="10"
                              AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
                              AbsoluteLayout.LayoutFlags="All"/>
-                    <BoxView BackgroundColor="#e384c2" Margin="10"
+                    <BoxView BackgroundColor="#a56db5" Margin="10"
                              CornerRadius="10"
                              AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
                              AbsoluteLayout.LayoutFlags="All">
                     </BoxView>
                     <Grid>
-                        <Image Source="logoff_icon" Margin="30, 20, 30, 10" BackgroundColor="Transparent">
+                        <Image Source="logoff_icon" Margin="35, 20, 30, 10" BackgroundColor="Transparent">
                         </Image>
                         <Label Grid.Row="1" Text="Выйти" HorizontalOptions="Center"
-                               FontSize="20" Padding="0" FontFamily="Eastman-Light">
+                               FontSize="20" Padding="7, 0, 0, 0" FontFamily="Eastman-Light">
                         </Label>
                     </Grid>
                 </AbsoluteLayout>
 
-                <Label Grid.Row="2" Grid.ColumnSpan="2" VerticalTextAlignment="End"
+                <Label Grid.Row="7" VerticalTextAlignment="End"
                        Text="ECP-Messenger by Kinko Artem (2022)" HorizontalTextAlignment="Center"
                        FontFamily="Eastman-Medium"></Label>
             </Grid>
